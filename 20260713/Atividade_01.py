@@ -1,4 +1,4 @@
-#Atividade aula 01
+# Atividade 01 - 13/07/2026
 
 id_venda = str(input("ID de Venda: "))
 data = input("Data: ")
