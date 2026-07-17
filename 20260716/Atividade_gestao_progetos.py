@@ -22,7 +22,7 @@ while proceed == "1":
 
 # Warning de seleção inválida, caso não esteja no range sugerido
     while select not in ["1", "2"]:
-        print("\nDigitou errado, hein? Aqui não passa nada!")
+        print("\nDigitou errado, hein? Tudo bem, ninguém viu.")
         select = input("Por favor, selecione apenas 1 ou 2:\n")
 
 # Condicional de Celsius para Fahrenheit
@@ -59,6 +59,6 @@ while proceed == "1":
     proceed = input()
 
     while proceed not in ["1", "2"]:
-        proceed = input("Opção inválida. Digite apenas 1 para SIM ou 2 para NÃO:\n")
+        proceed = input("Peraí, jovem... Digite apenas 1 para SIM ou 2 para NÃO:\n")
 
 print("\nShow de bolitas! Então até a próxima, xau!")
