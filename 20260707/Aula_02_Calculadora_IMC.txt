@@ -1,0 +1,88 @@
+#LÓGICA DE PROGRAMAÇÃO
+
+Bloco 1:
+
+idade = int(input("Qual é a tua idade? \n"))
+print(idade)
+altura = float(input("Qual a tua altura? \n"))
+print(altura)
+peso = float(input("Quanto tu pesas? \n"))
+print(peso)
+imc = (peso / (altura*altura))
+print(f"Olha só, teu IMC é {imc}")
+
+
+Bloco 2:
+
+cotacao = float(5.04)
+print("Qual valor você deseja converter de USD para BRL? \n")
+valor = float(input())
+conversao = valor / cotacao
+print(valor, "USD são ", conversao, "BRL")
+
+
+Bloco 3:
+
+cotacao = float(5.04)
+print("Qual valor você deseja converter de BRL para USD? \n")
+valor = float(input())
+conversao = valor / cotacao
+print(valor, "USD são ", conversao, "BRL")
+
+
+Bloco 4:
+
+nota1 = float (input("Informe nota 1: "))
+nota2 = float (input("Informe nota 2: "))
+#soma das duas notas
+soma = nota1 + nota2
+media = soma/2
+print("Media é: ", media)
+if media >=7:
+  print ("Aluno aprovado")
+else:
+  print("Aluno Reprovado")
+
+
+Bloco 5:
+
+print("Qual é a tua idade?")
+idade = int(input())
+if idade >= 18:
+  print("Parabéns, adulto, você é um adulto.")
+else:
+  print("Você ainda não tem dezoitinho. Tente de novo em alguns meses. 👍")
+
+
+Bloco 6:
+
+print("Qual é a tua idade?")
+idade = int(input())
+if idade >= 18:
+  print("Parabéns, adulto, você é um adulto.")
+elif idade >= 14:
+  print("Você ainda não tem dezoitinho. Tente de novo em alguns meses. 👍")
+else:
+  print("Quem é o neném?")
+
+
+Bloco 7:
+
+print("Qual é a tua idade?")
+idade = int(input())
+print("Qual é a tua altura?")
+altura = float(input())
+print("E quanto pesa essa lindeza?")
+peso = float(input())
+imc = (peso / (altura*altura))
+print(f"Olha só, teu IMC é {imc}")
+if imc < 18.5:
+  print("Tem que tomar Biotônico. (Tá magrin...)")
+elif imc >= 18.5 and imc <= 24.9:
+  print("Tudo certo. Beba água. (Adequado)")
+elif imc >= 25 and imc <= 29.9:
+  print("Tá bão, né? Só dá uma segurada. (Sobrepeso)")
+elif imc >= 30 and imc <= 34.9:
+  print("Rapais... tá certo isso? (Obesidade Grau I)")
+else:
+  print("Só café, LARGA O PÃO!")
