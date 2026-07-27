@@ -1,57 +1,78 @@
-# Sistema de Caixa Eletrônico
+import csv
+from datetime import datetime
+
+ARQUIVO_CSV = "extrato_movimentacao.csv"
+
+def salvar_no_csv(tipo, valor):
+    with open(ARQUIVO_CSV, mode="a", newline="", encoding="utf-8") as arquivo:
+        escritor = csv.writer(arquivo)
+        escritor.writerow([datetime.now().strftime("%d/%m/%Y %H:%M:%S"), tipo, f"{valor:.2f}", f"{saldo:.2f}"])
 
 saldo = 100
 extrato = []
 
-def menu():
-    print("\n=== SISTEMA CAIXA ELETRÔNICO ===\n")
-    print("1 - Consultar saldo")
-    print("2 - Depositar")
-    print("3 - Sacar")
-    print("4 - Extrato")
-    print("5 - Sair")
+def exibir_banco():
+    print("\n===== CAIXA ELETRONICO =====")
+    print("1- Consultar Saldo")
+    print("2- Depositar Dinheiro")
+    print("3- Sacar Dinheiro")
+    print("4- Ver Extrato")
+    print("5- Sair")
 
 def consultar_saldo():
-    print(f"Seu saldo atual é de: R$ {saldo:.2f}")
-    pass # Fecha a função consultar_saldo
+    print(f"\nSeu saldo atual é: R$ {saldo}")
+    pass
 
-def depositar():
+def depositar_dinheiro():
     global saldo
-    valor = float(input("\nDigite o valor a ser depositado:\n"))
-    if valor <= 0:
+    valor = float(input("\nDigite o valor a ser depositado R$ "))
+    if valor > 0:
         saldo += valor
-        print(f"\nDepósito de R$ {valor:.2f} realizado com sucesso.\n")
-    pass # Fecha a função depositar
+        extrato.append(f"Depósito: R$ {valor:.2f}")
+        salvar_no_csv("Depósito", valor)
+        print(f"\nDeposito de R$ {valor} realizado com sucesso.")
+    else:
+        print("\nValor inválido.")
+    pass
 
-def sacar():
+def sacar_dinheiro():
     global saldo
-    valor = float(input("\nInsira o valor a ser sacado:\n"))
+    valor = float(input("\nDigite o valor a ser sacado R$ "))
     if valor > 0 and valor <= saldo:
         saldo -= valor
-        print(f"\nSaque de R$ {valor:.2f} realizado com sucesso.\n")
-    pass # Fecha a função sacar
+        extrato.append(f"Saque: R$ {valor:.2f}")
+        salvar_no_csv("Saque", valor)
+        print(f"\nSaque de R$ {valor} realizado com sucesso.")
+    else:
+        print("\nSaldo insuficiente ou valor inválido.")
+    pass
 
-def extrato():
-    print(f"\nExtrato: SEU SALDO É DE "
-          f"\nR$ {saldo:.2f}")
+def ver_extrato():
+    print("\n===== EXTRATO =====")
+    if not extrato:
+        print("Nenhuma movimentação realizada.")
+    else:
+        for movimentacao in extrato:
+            print(movimentacao)
+    print(f"\nSaldo atual: R$ {saldo:.2f}")
+    pass
 
 def main():
     while True:
-        menu()
-        opcao = input("\nEscolha uma opção:\n")
-
+        exibir_banco()
+        opcao = input("Escolha uma opção: ")
         if opcao == "1":
             consultar_saldo()
         elif opcao == "2":
-            depositar()
+            depositar_dinheiro()
         elif opcao == "3":
-            sacar()
+            sacar_dinheiro()
         elif opcao == "4":
-            extrato()
+            ver_extrato()
         elif opcao == "5":
-            print("\nAtendimento encerrado.\n")
+            print("\nSaindo do sistema. Obrigado por utilizar o Caixa Eletrônico.")
             break
         else:
-            print("\nOpção inválida. Por favor, insira uma opção válida.\n")
+            print("\nOpção inválida. Por favor, escolha uma opção válida.")
 
 main()
